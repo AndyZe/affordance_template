@@ -69,7 +69,7 @@ namespace moveit_planner
       MoveItPlanner();
       ~MoveItPlanner();
 
-      typedef std::shared_ptr<moveit::planning_interface::MoveGroup> MoveGroupSharedPtr;
+      typedef std::shared_ptr<moveit::planning_interface::MoveGroupInterface> MoveGroupSharedPtr;
 
     protected:
 
@@ -101,9 +101,6 @@ namespace moveit_planner
       bool getCurrentState(const std::string&, sensor_msgs::JointState&);
 
       bool applyMaskConstraints(const std::string &group_name, moveit_msgs::Constraints &constraints);
-
-      bool setObstacles(planner_interface::SetObstacles::Request  &req   ,
-                          planner_interface::SetObstacles::Response &res);
 
       moveit::planning_interface::PlanningSceneInterface planning_scene_interface_;  
       std::map<std::string, MoveGroupSharedPtr> groups_;

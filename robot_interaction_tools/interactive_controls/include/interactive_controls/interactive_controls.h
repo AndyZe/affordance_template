@@ -139,7 +139,7 @@ namespace interactive_controls
 
 
     protected:
-      std::shared_ptr<planner_interface::PlannerInterface> planner_;
+      boost::shared_ptr<planner_interface::PlannerInterface> planner_;
       pluginlib::ClassLoader<planner_interface::PlannerInterface> planner_loader_;
       std::map<std::string, end_effector_helper::EndEffectorHelperConstPtr> ee_helper_map_;
       std::map<std::string, InteractiveControls::FrameInfo> frame_store_;
