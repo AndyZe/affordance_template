@@ -47,9 +47,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <robot_interaction_tools_msgs/JointMask.h>
 #include <planner_interface/tolerance_util.h>
-#include <planner_interface/SetObstacles.h>
 
-#include <moveit/move_group_interface/move_group.h>
+#include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit_msgs/DisplayTrajectory.h>
 #include <moveit_msgs/CollisionObject.h>
 
@@ -549,7 +548,7 @@ namespace planner_interface
        * @brief Get pointer to RDF Model.
        * @return RDFModel pointer
        */
-      inline rit_utils::RDFModel *getRDFModel() { return rdf_model_; } //boost::shared_ptr<utils::REDFModel>
+      inline rit_utils::RDFModel *getRDFModel() { return rdf_model_; } //std::shared_ptr<utils::REDFModel>
 
       /**
        * @brief Display available planned paths. Passthrough method.
@@ -615,8 +614,8 @@ namespace planner_interface
       std::map<std::string, visualization_msgs::MarkerArray> marker_store_;
       std::map<std::string, robot_interaction_tools_msgs::JointMask> joint_mask_;
 
-      rit_utils::RDFModel *rdf_model_; // FIXME -- // boost::shared_ptr<utils::REDFModel> rdf_model_;
-      boost::shared_ptr<robot_display::PredictiveDisplay> display_robot_;
+      rit_utils::RDFModel *rdf_model_; // FIXME -- // std::shared_ptr<utils::REDFModel> rdf_model_;
+      std::shared_ptr<robot_display::PredictiveDisplay> display_robot_;
       tolerance_util::ToleranceUtilSharedPtr toleranceUtil;
   };
 };

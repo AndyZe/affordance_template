@@ -62,7 +62,7 @@ namespace affordance_template_markers
     sensor_msgs::JointState joint_data_;
     affordance_template_msgs::RobotConfig robot_config_;
     tf::TransformListener listener_;
-    boost::shared_ptr<planner_interface::PlannerInterface> robot_planner_;
+    std::shared_ptr<planner_interface::PlannerInterface> robot_planner_;
     pluginlib::ClassLoader<planner_interface::PlannerInterface> planner_loader_;
 
     bool configured_;
@@ -121,7 +121,7 @@ namespace affordance_template_markers
     void tearDown();
     void reset();
 
-    boost::shared_ptr<planner_interface::PlannerInterface> getPlanner() { return robot_planner_; }
+    std::shared_ptr<planner_interface::PlannerInterface> getPlanner() { return robot_planner_; }
   };
 }
 

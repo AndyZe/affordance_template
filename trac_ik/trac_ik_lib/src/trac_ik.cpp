@@ -79,7 +79,7 @@ namespace TRAC_IK {
 
     std::vector<KDL::Segment> chain_segs = chain.segments;
 
-    boost::shared_ptr<const urdf::Joint> joint;
+    std::shared_ptr<const urdf::Joint> joint;
 
     std::vector<double> l_bounds, u_bounds;
 
@@ -478,9 +478,9 @@ namespace TRAC_IK {
     std::vector<boost::shared_future<bool> > pending_data;
 
     typedef boost::packaged_task<bool> task_t;
-    boost::shared_ptr<task_t> task1 = boost::make_shared<task_t>(boost::bind(&TRAC_IK::runKDL, this, boost::cref(q_init), boost::cref(p_in)));
+    std::shared_ptr<task_t> task1 = std::make_shared<task_t>(boost::bind(&TRAC_IK::runKDL, this, boost::cref(q_init), boost::cref(p_in)));
 
-    boost::shared_ptr<task_t> task2 = boost::make_shared<task_t>(boost::bind(&TRAC_IK::runNLOPT, this, boost::cref(q_init), boost::cref(p_in)));
+    std::shared_ptr<task_t> task2 = std::make_shared<task_t>(boost::bind(&TRAC_IK::runNLOPT, this, boost::cref(q_init), boost::cref(p_in)));
 
     boost::shared_future<bool> fut1(task1->get_future());
     boost::shared_future<bool> fut2(task2->get_future());

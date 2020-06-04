@@ -69,7 +69,7 @@ namespace moveit_planner
       MoveItPlanner();
       ~MoveItPlanner();
 
-      typedef boost::shared_ptr<moveit::planning_interface::MoveGroup> MoveGroupSharedPtr;
+      typedef std::shared_ptr<moveit::planning_interface::MoveGroup> MoveGroupSharedPtr;
 
     protected:
 

@@ -36,7 +36,7 @@ using namespace affordance_template_markers;
 using namespace affordance_template_msgs;
 
 AffordanceTemplate::AffordanceTemplate(const ros::NodeHandle nh, 
-                                        boost::shared_ptr<interactive_markers::InteractiveMarkerServer> server,  
+                                        std::shared_ptr<interactive_markers::InteractiveMarkerServer> server,  
                                         std::string robot_name, 
                                         std::string template_type,
                                         int id) :
@@ -68,8 +68,8 @@ AffordanceTemplate::AffordanceTemplate(const ros::NodeHandle nh,
 
 
 AffordanceTemplate::AffordanceTemplate(const ros::NodeHandle nh, 
-                                        boost::shared_ptr<interactive_markers::InteractiveMarkerServer> server,  
-                                        boost::shared_ptr<affordance_template_markers::RobotInterface> robot_interface,
+                                        std::shared_ptr<interactive_markers::InteractiveMarkerServer> server,  
+                                        std::shared_ptr<affordance_template_markers::RobotInterface> robot_interface,
                                         std::string robot_name, 
                                         std::string template_type,
                                         int id) :
@@ -84,7 +84,7 @@ AffordanceTemplate::~AffordanceTemplate()
   robot_interface_->getPlanner()->resetAnimation(true);
 }
 
-void AffordanceTemplate::setRobotInterface(boost::shared_ptr<affordance_template_markers::RobotInterface> robot_interface)
+void AffordanceTemplate::setRobotInterface(std::shared_ptr<affordance_template_markers::RobotInterface> robot_interface)
 {
   robot_interface_ = robot_interface;
 }
