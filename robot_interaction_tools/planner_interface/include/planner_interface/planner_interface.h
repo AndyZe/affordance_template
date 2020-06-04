@@ -59,7 +59,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static const std::vector<double> PLAN_COLOR = {0.5,0.1,0.75,1};
 static const char PATH_INCREMENT = 1;
 
-typedef moveit::planning_interface::MoveGroup::Plan Plan;
+typedef moveit::planning_interface::MoveGroupInterface::Plan Plan;
 typedef std::map<std::string, sensor_msgs::JointState> JointStateMap;
 
 namespace planner_interface
@@ -404,7 +404,7 @@ namespace planner_interface
        * @param plan plan to return
        * @return success if plan found for group
        */
-      virtual bool getPlan(const std::string& group, moveit::planning_interface::MoveGroup::Plan& plan){}
+      virtual bool getPlan(const std::string& group, moveit::planning_interface::MoveGroupInterface::Plan& plan){}
 
       /**
        * @brief Get current joint states for a group.
@@ -419,7 +419,7 @@ namespace planner_interface
        * @param group_plans list of group name and plan pairs
        * @return successful execution
        */
-      virtual bool executeContinuousPlans(const std::vector<std::pair<std::string, moveit::planning_interface::MoveGroup::Plan> >&){}
+      virtual bool executeContinuousPlans(const std::vector<std::pair<std::string, moveit::planning_interface::MoveGroupInterface::Plan> >&){}
       
       
       //****************************************************************
@@ -525,17 +525,6 @@ namespace planner_interface
       //****************************************************************
       //********************** INLINE METHODS **************************
       //****************************************************************
-
-      /**
-       * @brief Service call to set obstacles in planning scene.
-       * @param req request message
-       * @param res response message
-       * @return success indicator
-       */
-      inline virtual bool setObstacles(SetObstacles::Request& req, SetObstacles::Response& res) {
-        ROS_WARN("PlannerInterface plugin does not supprt obstacles at this point");
-        return false;
-      }
 
       /**
        * @brief Get partial plan flag.
